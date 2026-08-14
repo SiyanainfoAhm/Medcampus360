@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+out/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs / cache
+*.log
+.npm
+.vite/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
