@@ -72,7 +72,27 @@ export default defineConfig({
   base,
   build: {
     sourcemap: true,
-    outDir: 'out',
+    outDir: "out",
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: "react-vendor",
+              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom)([\\/]|$)/,
+            },
+            {
+              name: "recharts",
+              test: /node_modules[\\/](recharts|d3-|internmap|delaunator|robust-predicates)/,
+            },
+            {
+              name: "i18n",
+              test: /node_modules[\\/](i18next|react-i18next|i18next-browser-languagedetector)([\\/]|$)/,
+            },
+          ],
+        },
+      },
+    },
   },
   resolve: {
     alias: {

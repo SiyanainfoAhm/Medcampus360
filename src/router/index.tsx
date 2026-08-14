@@ -1,6 +1,6 @@
-import { useNavigate, type NavigateFunction } from "react-router-dom";
-import { useRoutes } from "react-router-dom";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import { useNavigate, useRoutes, type NavigateFunction } from "react-router-dom";
+import { LoadingState } from "@/components/base/States";
 import routes from "./config";
 
 let navigateResolver: (navigate: ReturnType<typeof useNavigate>) => void;
@@ -22,5 +22,5 @@ export function AppRoutes() {
     window.REACT_APP_NAVIGATE = navigate;
     navigateResolver(window.REACT_APP_NAVIGATE);
   });
-  return element;
+  return <Suspense fallback={<LoadingState />}>{element}</Suspense>;
 }
