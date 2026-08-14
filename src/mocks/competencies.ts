@@ -1,0 +1,128 @@
+export interface Competency {
+  code: string;
+  name: string;
+  domain: string;
+  requiredLevel: number;
+  assessmentMethod: string;
+  requiredObservations: number;
+}
+
+export const COMPETENCY_DOMAINS = [
+  { id: 'PC', name: 'Patient Care', description: 'Care that is compassionate, appropriate, and effective for the treatment of health problems and the promotion of health.' },
+  { id: 'MK', name: 'Medical Knowledge', description: 'Demonstration of knowledge about established and evolving biomedical, clinical, and cognate sciences.' },
+  { id: 'PBLI', name: 'Practice-Based Learning and Improvement', description: 'Investigation and evaluation of care for patients, appraisal and assimilation of scientific evidence, and improvement of practice.' },
+  { id: 'ICS', name: 'Interpersonal and Communication Skills', description: 'Skills that result in effective information exchange and collaboration with patients, families, and health professionals.' },
+  { id: 'PROF', name: 'Professionalism', description: 'Commitment to professional responsibilities, adherence to ethical principles, and sensitivity to a diverse patient population.' },
+  { id: 'SBP', name: 'Systems-Based Practice', description: 'Awareness of and responsiveness to the larger context and system of health care, including the ability to call effectively on other resources.' },
+  { id: 'CS', name: 'Clinical Skills', description: 'Procedural and examination skills performed with appropriate technique, safety, and supervision.' },
+  { id: 'EPA', name: 'Entrustable Professional Activities', description: 'Units of professional practice that can be entrusted to a learner once sufficient competence is demonstrated.' },
+];
+
+const R = (m: string, n: number) => ({ assessmentMethod: m, requiredObservations: n });
+
+export const COMPETENCIES: Competency[] = [
+  // Patient Care
+  { code: 'PC-01', name: 'Obtain a complete and accurate medical history', domain: 'Patient Care', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'PC-02', name: 'Develop a prioritized differential diagnosis', domain: 'Patient Care', requiredLevel: 4, ...R('Clinical Reasoning Assessment', 8) },
+  { code: 'PC-03', name: 'Formulate and justify a diagnostic and treatment plan', domain: 'Patient Care', requiredLevel: 4, ...R('Direct Observation', 8) },
+  { code: 'PC-04', name: 'Interpret laboratory and diagnostic studies', domain: 'Patient Care', requiredLevel: 3, ...R('Case-Based Discussion', 6) },
+  { code: 'PC-05', name: 'Manage common acute and chronic conditions', domain: 'Patient Care', requiredLevel: 3, ...R('Direct Observation', 6) },
+  { code: 'PC-06', name: 'Deliver preventive care and health maintenance', domain: 'Patient Care', requiredLevel: 3, ...R('Case-Based Discussion', 4) },
+  { code: 'PC-07', name: 'Coordinate transitions of care and discharge planning', domain: 'Patient Care', requiredLevel: 3, ...R('Chart Review', 4) },
+  { code: 'PC-08', name: 'Provide patient-centered shared decision making', domain: 'Patient Care', requiredLevel: 3, ...R('Direct Observation', 4) },
+  { code: 'PC-09', name: 'Recognize and respond to deteriorating patient status', domain: 'Patient Care', requiredLevel: 3, ...R('Simulation', 4) },
+  { code: 'PC-10', name: 'Demonstrate appropriate use of consultative resources', domain: 'Patient Care', requiredLevel: 2, ...R('Case-Based Discussion', 3) },
+  { code: 'PC-11', name: 'Document clinical encounters accurately', domain: 'Patient Care', requiredLevel: 4, ...R('Chart Review', 8) },
+  { code: 'PC-12', name: 'Apply evidence-based preventive screening guidelines', domain: 'Patient Care', requiredLevel: 3, ...R('Case-Based Discussion', 3) },
+  // Medical Knowledge
+  { code: 'MK-01', name: 'Apply foundational biomedical science to clinical care', domain: 'Medical Knowledge', requiredLevel: 4, ...R('Written Assessment', 6) },
+  { code: 'MK-02', name: 'Demonstrate core knowledge of common presenting problems', domain: 'Medical Knowledge', requiredLevel: 4, ...R('Written Assessment', 6) },
+  { code: 'MK-03', name: 'Explain pathophysiology of common disease states', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Case-Based Discussion', 5) },
+  { code: 'MK-04', name: 'Interpret pharmacologic principles in prescribing', domain: 'Medical Knowledge', requiredLevel: 3, ...R('OSPE', 4) },
+  { code: 'MK-05', name: 'Apply population health and epidemiology concepts', domain: 'Medical Knowledge', requiredLevel: 2, ...R('Written Assessment', 3) },
+  { code: 'MK-06', name: 'Critically appraise the medical literature', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Portfolio Review', 4) },
+  { code: 'MK-07', name: 'Explain imaging findings and their clinical significance', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Case-Based Discussion', 4) },
+  { code: 'MK-08', name: 'Demonstrate knowledge of preventive medicine principles', domain: 'Medical Knowledge', requiredLevel: 2, ...R('Written Assessment', 3) },
+  { code: 'MK-09', name: 'Explain ethical and legal principles in medicine', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Written Assessment', 3) },
+  { code: 'MK-10', name: 'Apply knowledge of health disparities and social determinants', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Case-Based Discussion', 3) },
+  { code: 'MK-11', name: 'Recognize common psychiatric and behavioral disorders', domain: 'Medical Knowledge', requiredLevel: 3, ...R('Written Assessment', 4) },
+  { code: 'MK-12', name: 'Demonstrate knowledge of geriatric syndromes', domain: 'Medical Knowledge', requiredLevel: 2, ...R('Written Assessment', 3) },
+  // Practice-Based Learning and Improvement
+  { code: 'PBLI-01', name: 'Formulate a focused clinical question', domain: 'Practice-Based Learning and Improvement', requiredLevel: 4, ...R('Portfolio Review', 5) },
+  { code: 'PBLI-02', name: 'Search and appraise evidence efficiently', domain: 'Practice-Based Learning and Improvement', requiredLevel: 3, ...R('Portfolio Review', 5) },
+  { code: 'PBLI-03', name: 'Apply evidence to individual patient care', domain: 'Practice-Based Learning and Improvement', requiredLevel: 3, ...R('Case-Based Discussion', 5) },
+  { code: 'PBLI-04', name: 'Engage in self-assessment and reflective practice', domain: 'Practice-Based Learning and Improvement', requiredLevel: 4, ...R('Portfolio Review', 6) },
+  { code: 'PBLI-05', name: 'Use feedback to improve performance', domain: 'Practice-Based Learning and Improvement', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'PBLI-06', name: 'Participate in quality improvement initiatives', domain: 'Practice-Based Learning and Improvement', requiredLevel: 2, ...R('Portfolio Review', 3) },
+  { code: 'PBLI-07', name: 'Recognize and learn from errors and near misses', domain: 'Practice-Based Learning and Improvement', requiredLevel: 3, ...R('Case-Based Discussion', 4) },
+  { code: 'PBLI-08', name: 'Identify personal knowledge gaps and set learning goals', domain: 'Practice-Based Learning and Improvement', requiredLevel: 4, ...R('Portfolio Review', 6) },
+  { code: 'PBLI-09', name: 'Present a critically appraised topic', domain: 'Practice-Based Learning and Improvement', requiredLevel: 3, ...R('Direct Observation', 3) },
+  { code: 'PBLI-10', name: 'Use clinical decision support tools', domain: 'Practice-Based Learning and Improvement', requiredLevel: 2, ...R('Direct Observation', 3) },
+  { code: 'PBLI-11', name: 'Analyze personal performance data', domain: 'Practice-Based Learning and Improvement', requiredLevel: 2, ...R('Portfolio Review', 3) },
+  { code: 'PBLI-12', name: 'Teach peers and junior learners', domain: 'Practice-Based Learning and Improvement', requiredLevel: 2, ...R('Direct Observation', 3) },
+  // Interpersonal and Communication Skills
+  { code: 'ICS-01', name: 'Establish rapport with patients and families', domain: 'Interpersonal and Communication Skills', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'ICS-02', name: 'Deliver difficult news with empathy', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Simulation', 4) },
+  { code: 'ICS-03', name: 'Communicate effectively in writing', domain: 'Interpersonal and Communication Skills', requiredLevel: 4, ...R('Chart Review', 6) },
+  { code: 'ICS-04', name: 'Give an organized oral presentation', domain: 'Interpersonal and Communication Skills', requiredLevel: 4, ...R('Direct Observation', 8) },
+  { code: 'ICS-05', name: 'Communicate effectively in interprofessional teams', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('360-Degree Review', 5) },
+  { code: 'ICS-06', name: 'Use interpreters and health literacy strategies', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Direct Observation', 3) },
+  { code: 'ICS-07', name: 'Engage in shared decision making', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Direct Observation', 4) },
+  { code: 'ICS-08', name: 'Provide clear discharge instructions', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Direct Observation', 3) },
+  { code: 'ICS-09', name: 'Communicate clinical uncertainty honestly', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Case-Based Discussion', 3) },
+  { code: 'ICS-10', name: 'Document informed consent conversations', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Chart Review', 3) },
+  { code: 'ICS-11', name: 'Receive and act on interprofessional feedback', domain: 'Interpersonal and Communication Skills', requiredLevel: 4, ...R('360-Degree Review', 5) },
+  { code: 'ICS-12', name: 'Communicate with patients of diverse backgrounds', domain: 'Interpersonal and Communication Skills', requiredLevel: 3, ...R('Direct Observation', 4) },
+  // Professionalism
+  { code: 'PROF-01', name: 'Demonstrate honesty and integrity', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 6) },
+  { code: 'PROF-02', name: 'Adhere to ethical principles in patient care', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 6) },
+  { code: 'PROF-03', name: 'Respect patient privacy and confidentiality', domain: 'Professionalism', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'PROF-04', name: 'Demonstrate accountability and reliability', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 6) },
+  { code: 'PROF-05', name: 'Maintain professional boundaries', domain: 'Professionalism', requiredLevel: 4, ...R('Direct Observation', 5) },
+  { code: 'PROF-06', name: 'Demonstrate cultural humility', domain: 'Professionalism', requiredLevel: 3, ...R('Direct Observation', 4) },
+  { code: 'PROF-07', name: 'Show compassion and respect for all patients', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 6) },
+  { code: 'PROF-08', name: 'Recognize and address personal impairment', domain: 'Professionalism', requiredLevel: 3, ...R('Portfolio Review', 3) },
+  { code: 'PROF-09', name: 'Manage time and competing responsibilities', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 6) },
+  { code: 'PROF-10', name: 'Demonstrate responsiveness to patient needs', domain: 'Professionalism', requiredLevel: 4, ...R('360-Degree Review', 5) },
+  { code: 'PROF-11', name: 'Engage in ethical research conduct', domain: 'Professionalism', requiredLevel: 2, ...R('Portfolio Review', 2) },
+  { code: 'PROF-12', name: 'Advocate for patients and communities', domain: 'Professionalism', requiredLevel: 3, ...R('Portfolio Review', 3) },
+  // Systems-Based Practice
+  { code: 'SBP-01', name: 'Work effectively within the health care system', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('Direct Observation', 5) },
+  { code: 'SBP-02', name: 'Coordinate care across settings and teams', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('Chart Review', 4) },
+  { code: 'SBP-03', name: 'Identify and address system inefficiencies', domain: 'Systems-Based Practice', requiredLevel: 2, ...R('Portfolio Review', 3) },
+  { code: 'SBP-04', name: 'Use resources judiciously', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('Case-Based Discussion', 4) },
+  { code: 'SBP-05', name: 'Understand value-based care principles', domain: 'Systems-Based Practice', requiredLevel: 2, ...R('Case-Based Discussion', 3) },
+  { code: 'SBP-06', name: 'Apply patient safety principles', domain: 'Systems-Based Practice', requiredLevel: 4, ...R('Simulation', 5) },
+  { code: 'SBP-07', name: 'Report and analyze safety events', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('Case-Based Discussion', 3) },
+  { code: 'SBP-08', name: 'Facilitate care at transitions', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('Chart Review', 4) },
+  { code: 'SBP-09', name: 'Engage with community health resources', domain: 'Systems-Based Practice', requiredLevel: 2, ...R('Portfolio Review', 3) },
+  { code: 'SBP-10', name: 'Understand reimbursement and insurance structures', domain: 'Systems-Based Practice', requiredLevel: 2, ...R('Written Assessment', 2) },
+  { code: 'SBP-11', name: 'Participate in interprofessional team meetings', domain: 'Systems-Based Practice', requiredLevel: 3, ...R('360-Degree Review', 4) },
+  { code: 'SBP-12', name: 'Use electronic health record workflows efficiently', domain: 'Systems-Based Practice', requiredLevel: 4, ...R('Chart Review', 6) },
+  // Clinical Skills
+  { code: 'CS-01', name: 'Perform a comprehensive physical examination', domain: 'Clinical Skills', requiredLevel: 4, ...R('OSCE', 6) },
+  { code: 'CS-02', name: 'Perform a focused cardiovascular examination', domain: 'Clinical Skills', requiredLevel: 4, ...R('OSCE', 4) },
+  { code: 'CS-03', name: 'Perform a focused respiratory examination', domain: 'Clinical Skills', requiredLevel: 4, ...R('OSCE', 4) },
+  { code: 'CS-04', name: 'Perform an abdominal examination', domain: 'Clinical Skills', requiredLevel: 4, ...R('OSCE', 4) },
+  { code: 'CS-05', name: 'Perform a neurologic examination', domain: 'Clinical Skills', requiredLevel: 3, ...R('OSCE', 4) },
+  { code: 'CS-06', name: 'Obtain and interpret an electrocardiogram', domain: 'Clinical Skills', requiredLevel: 3, ...R('DOPS', 5) },
+  { code: 'CS-07', name: 'Perform venipuncture and IV cannulation', domain: 'Clinical Skills', requiredLevel: 3, ...R('DOPS', 5) },
+  { code: 'CS-08', name: 'Perform basic wound care and suturing', domain: 'Clinical Skills', requiredLevel: 3, ...R('DOPS', 4) },
+  { code: 'CS-09', name: 'Perform basic life support', domain: 'Clinical Skills', requiredLevel: 4, ...R('Simulation', 3) },
+  { code: 'CS-10', name: 'Obtain blood cultures using sterile technique', domain: 'Clinical Skills', requiredLevel: 3, ...R('DOPS', 3) },
+  { code: 'CS-11', name: 'Perform point-of-care testing', domain: 'Clinical Skills', requiredLevel: 3, ...R('DOPS', 3) },
+  { code: 'CS-12', name: 'Insert a urinary catheter', domain: 'Clinical Skills', requiredLevel: 2, ...R('DOPS', 3) },
+  // Entrustable Professional Activities
+  { code: 'EPA-01', name: 'Gather a history and perform a physical examination', domain: 'Entrustable Professional Activities', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'EPA-02', name: 'Prioritize a differential diagnosis', domain: 'Entrustable Professional Activities', requiredLevel: 4, ...R('Direct Observation', 5) },
+  { code: 'EPA-03', name: 'Recommend and interpret common diagnostic tests', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Case-Based Discussion', 5) },
+  { code: 'EPA-04', name: 'Enter and discuss orders and prescriptions', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Chart Review', 5) },
+  { code: 'EPA-05', name: 'Document a clinical encounter', domain: 'Entrustable Professional Activities', requiredLevel: 4, ...R('Chart Review', 6) },
+  { code: 'EPA-06', name: 'Provide an oral presentation of a clinical encounter', domain: 'Entrustable Professional Activities', requiredLevel: 4, ...R('Direct Observation', 6) },
+  { code: 'EPA-07', name: 'Form clinical questions and retrieve evidence', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Portfolio Review', 4) },
+  { code: 'EPA-08', name: 'Give or receive a patient handover', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Direct Observation', 4) },
+  { code: 'EPA-09', name: 'Collaborate as a member of an interprofessional team', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('360-Degree Review', 4) },
+  { code: 'EPA-10', name: 'Recognize a patient requiring urgent or emergent care', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Simulation', 3) },
+  { code: 'EPA-11', name: 'Obtain informed consent for common procedures', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('Direct Observation', 3) },
+  { code: 'EPA-12', name: 'Perform general procedures of a physician', domain: 'Entrustable Professional Activities', requiredLevel: 3, ...R('DOPS', 4) },
+];
